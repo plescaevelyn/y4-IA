@@ -41,7 +41,8 @@ public class ClientSimplu {
             int y = scanner.nextInt();
 
             // Send x and y to the server
-            out.println(x + " " + y);
+            out.println(x);
+            out.println(y);
             out.flush();
 
             // Receive and print the percentage (P) from the server

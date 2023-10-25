@@ -20,6 +20,7 @@ import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class ServerSimplu {
     public static void main(String[] args) throws IOException {
@@ -47,6 +48,8 @@ public class ServerSimplu {
                 // Read the numbers (x and y) from the client
                 int x = Integer.parseInt(in.readLine());
                 int y = Integer.parseInt(in.readLine());
+                System.out.println("x: " + x);
+                System.out.println("y :" + y);
 
                 // Calculate the percentage and the result (P) back to the client
                 out.println((double) y / (x * 100));
