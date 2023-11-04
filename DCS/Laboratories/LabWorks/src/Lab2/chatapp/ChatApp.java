@@ -1,4 +1,4 @@
-package Lab2.ChatApp;
+package Lab2.chatapp;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
