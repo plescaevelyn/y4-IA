@@ -14,7 +14,6 @@ import java.net.*;
 
 
 public class QuoteClient {
-
     public static void main(String[] args) throws IOException {
         
         /*
@@ -42,6 +41,4 @@ public class QuoteClient {
 
         socket.close();
     }
-
-
 }
