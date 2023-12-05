@@ -1,17 +1,17 @@
 clear variables; close all; clc;
 
 data = load("L10.txt");
-t = 1:length(data); % pas de 10ms
+t = 0:0.01:1.84; % pas de 10ms
 
 plot(t, data)
 
 delta_output = 22.28 - 16.89
-input = 7 - 5.5
+input = 70 - 55
 
 Kf = delta_output/input
 
 delta_output * 0.63 + 16
-Tf = 7
+Tf = 7/100
 
 Hf = tf(Kf, [Tf, 1])
 
