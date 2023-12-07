@@ -16,8 +16,11 @@ uss = uo + 0.5;
 
 actuator_constant = 3;
 
-ho = 17.38;
-hss = 20.86;
+ho = 17.84;
+hss = 20.61;
+
+qo = 28.52;
+qss = 34.25;
 
 u = uss - uo;
 h = (hss - ho)/actuator_constant;
@@ -32,9 +35,9 @@ To = Tp/4;
 Ho1 = tf(1, [To, 1]);
 Hr1 = zpk(minreal(1/Hp1*Ho1/(1 - Ho1)))
 pidstd(Hr1)
+
+k_compensare = ((hss - ho)/(qss - qo))/((hss - ho)/(uss - uo))
 %% Electric model identification
-qss = 210
-qo = 13
 kp = (qss - qo)/(uss - uo)
 Tp = 0.63 * hss
 tr = 4; % timpul de raspuns egal cu 1s
@@ -43,7 +46,7 @@ To = tr/4;
 Hp2 = tf(kp, [Tp, 1])
 Ho2 = tf(1, [1, 1])
 Hr2 = zpk(minreal(1/Hp2*Ho2/(1 - Ho2)))
-pidstd(Hr2)
-
+pidstd(Hr2) % regulatorul de tip PI pt bucla inchisa
+Kp_bucla_interna = 1.13
+Ti_bucla_interna = 13
 Hp = zpk(minreal(Hp1*Ho2/(Ho2+1)))
-% pidstd(Hp)
