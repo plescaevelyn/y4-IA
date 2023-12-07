@@ -26,17 +26,24 @@ Kp = h/u
 hTp = ho + 0.63*(hss - ho)
 Tp = 240;
 
-Hp = tf([Kp],[Tp, 1])
+Hp1 = tf([Kp],[Tp, 1])
 %% PI controller
 To = Tp/4;
-Ho = tf(1, [To, 1]);
-Hr = zpk(minreal(1/Hp*Ho/(1 - Ho)))
-pidstd(Hr)
+Ho1 = tf(1, [To, 1]);
+Hr1 = zpk(minreal(1/Hp1*Ho1/(1 - Ho1)))
+pidstd(Hr1)
 %% Electric model identification
-qo = 37.63;
-qss = 41.14;
+qss = 210
+qo = 13
+kp = (qss - qo)/(uss - uo)
+Tp = 0.63 * hss
+tr = 4; % timpul de raspuns egal cu 1s
+To = tr/4;
 
-q = qss - qo
+Hp2 = tf(kp, [Tp, 1])
+Ho2 = tf(1, [1, 1])
+Hr2 = zpk(minreal(1/Hp2*Ho2/(1 - Ho2)))
+pidstd(Hr2)
 
-trp = 4*(Tp + To)
-k_compensare = (h/q)/(h/0.5)
+Hp = zpk(minreal(Hp1*Ho2/(Ho2+1)))
+% pidstd(Hp)
