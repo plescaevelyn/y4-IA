@@ -2,7 +2,7 @@ clear all; clear variables; clc;
 %% Date initiale
 A = 332.5 % suprafata bazinului in cm^2
 k = 0.033 % coeficienti model pompa
-k1 = 0.654
+k1 = 0.624
 k2 = -0.015
 k3 = -0.0006
 k11 = k2^2 + 4*(k - k3)*k1;
@@ -16,18 +16,18 @@ uss = uo + 0.5;
 
 actuator_constant = 3;
 
-ho = 17.84;
-hss = 20.61;
+ho = 16.23;
+hss = 19.86;
 
-qo = 28.52;
-qss = 34.25;
+qo = 28;
+qss = 33.99;
 
 u = uss - uo;
 h = (hss - ho)/actuator_constant;
 Kp = h/u
 
 hTp = ho + 0.63*(hss - ho)
-Tp = 240;
+Tp = 196;
 
 Hp1 = tf([Kp],[Tp, 1])
 %% PI controller
@@ -38,15 +38,24 @@ pidstd(Hr1)
 
 k_compensare = ((hss - ho)/(qss - qo))/((hss - ho)/(uss - uo))
 %% Electric model identification
-kp = (qss - qo)/(uss - uo)
-Tp = 0.63 * hss
-tr = 4; % timpul de raspuns egal cu 1s
-To = tr/4;
+% bucla interna
+kp = (qss - qo)/(uss - uo) 
+qTp = qo + 0.63 * (qss - qo)
+Tp1 = 0.754;
+% tr = 4; % timpul de raspuns egal cu 1s
+To1 = 1;
+Ti1 = Tp1;
+Kr1 = Tp1/kp/To1;
+%% Mechanical model identification
+% bucla externa
+ho = 16.16;
+hss = 23.92;
 
-Hp2 = tf(kp, [Tp, 1])
-Ho2 = tf(1, [1, 1])
-Hr2 = zpk(minreal(1/Hp2*Ho2/(1 - Ho2)))
-pidstd(Hr2) % regulatorul de tip PI pt bucla inchisa
-Kp_bucla_interna = 1.13
-Ti_bucla_interna = 13
-Hp = zpk(minreal(Hp1*Ho2/(Ho2+1)))
+Kp2 = (qss - qo)/(hss - ho)/actuator_constant;
+hTp2 = ho + 0.63 * (hss - ho)
+Tp2 = 437;
+
+Hp2 = tf(Kp2, [Tp2, 1])
+To2 = 100;
+Kr2 = Tp2/Kp2/To2;
+Ti2 = Tp2;
