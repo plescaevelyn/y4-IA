@@ -1,6 +1,6 @@
-package Lab3.Solutions;
+package Lab4;
 
-public class FirstOrderSystemThreaded implements Runnable {
+public class FirtsOrderSystemThreaded implements Runnable {
 
     double a, b, c, d;
     double x;
@@ -10,7 +10,7 @@ public class FirstOrderSystemThreaded implements Runnable {
     private boolean stop;
     private long period;
 
-    public FirstOrderSystemThreaded(double a, double b, double c,
+    public FirtsOrderSystemThreaded(double a, double b, double c,
                                     double d, long period) {
         this.a = a;
         this.b = b;

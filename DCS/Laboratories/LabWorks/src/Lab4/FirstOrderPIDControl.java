@@ -14,7 +14,7 @@ import core.TableParser;
 import java.util.HashMap;
 import java.util.function.Consumer;
 
-public class FirstOrderPIControl {
+public class FirstOrderPIDControl {
     /*
      * This example implements P[k] = a*e[k] + b*e[k-1] + P[k-1]
      */
@@ -54,11 +54,11 @@ public class FirstOrderPIControl {
             " [<NM><ZR><PM><PL><PL>]", //
             " [<ZR><PM><PL><PL><PL>]}");
 
-    public FirstOrderPIControl() {
+    public FirstOrderPIDControl() {
 
         // specify constants and period
         long period = 10;
-        FirtsOrderSystemThreaded plant = new FirtsOrderSystemThreaded(0.5, 0.7, 0.2, 0.3, period);
+        Lab4.FirtsOrderSystemThreaded plant = new Lab4.FirtsOrderSystemThreaded(0.5, 0.7, 0.2, 0.3, period);
 
         // specify the exit interval of the system
         FuzzyDriver plantInDriver = FuzzyDriver.createDriverFromMinMax(-0.6, +0.6);
@@ -93,12 +93,12 @@ public class FirstOrderPIControl {
         net.addArcFromTransitionToPlace(t2, p6);
         int t3 = net.addTransition(0, parser.parseTable(adder));//
         int t4delay = net.addTransition(1,
-                OneXOneTable.defaultTable());
+                OneXTwoTable.defaultTable());
         net.addArcFromPlaceToTransition(p6, t4delay, 1.0);
         int p7Mem = net.addPlace();
         net.setInitialMarkingForPlace(p7Mem, FuzzyToken.zeroToken());
         net.addArcFromTransitionToPlace(t4delay, p7Mem);
-        net.addArcFromPlaceToTransition(p7Mem, t3, 0.2);
+        // net.addArcFromPlaceToTransition(p7Mem, t3, 0.2);
         net.addArcFromPlaceToTransition(p5, t3, 0.8);
         int p8 = net.addPlace();
         net.addArcFromTransitionToPlace(t3, p8);
@@ -128,6 +128,24 @@ public class FirstOrderPIControl {
                 plant.setCommand(controlOutDriver.defuzzify(t));
             }
         });
+
+        // IN ADDITION FOR PID
+        int p12 = net.addPlace();
+        net.setInitialMarkingForPlace(p12, FuzzyToken.zeroToken());
+        int t8 = net.addTransition(1, OneXOneTable.defaultTable());
+        net.addArcFromPlaceToTransition(p12, t8, 1.0);
+        net.addArcFromTransitionToPlace(t4delay, p12);
+
+        int p13 = net.addPlace();
+        net.setInitialMarkingForPlace(p13, FuzzyToken.zeroToken());
+        net.addArcFromTransitionToPlace(t8, p13);
+        int t9 = net.addTransition(0, parser.parseTable(adder));
+        net.addArcFromPlaceToTransition(p13, t9, 0.2);
+        net.addArcFromPlaceToTransition(p7Mem, t9, 1.0);
+
+        int p14 = net.addPlace();
+        net.addArcFromTransitionToPlace(t9, p14);
+        net.addArcFromPlaceToTransition(p14, t3, 1.0);
 
         AsyncronRunnableExecutor executor = new AsyncronRunnableExecutor(net, period);
 
@@ -162,6 +180,6 @@ public class FirstOrderPIControl {
     }
 
     public static void main(String args[]) {
-        new FirstOrderPIControl();
+        new FirstOrderPIDControl();
     }
 }
