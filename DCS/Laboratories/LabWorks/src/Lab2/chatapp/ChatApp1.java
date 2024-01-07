@@ -20,7 +20,7 @@ import javax.swing.JTextField;
 /**
  * Chat
  */
-public class ChatApp {
+public class ChatApp1 {
     private static final int PORT = 4445;
     private static final int MAX_PACKET_SIZE = 1024;
 
@@ -30,7 +30,7 @@ public class ChatApp {
     private JTextArea messageArea;
     private JTextField messageField;
 
-    public ChatApp() {
+    public ChatApp1() {
         try {
             socket = new DatagramSocket(PORT);
             address = InetAddress.getByName("localhost");
@@ -109,6 +109,6 @@ public class ChatApp {
     }
 
     public static void main(String[] args) {
-        new ChatApp();
+        new ChatApp1();
     }
 }
