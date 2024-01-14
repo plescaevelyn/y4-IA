@@ -1,0 +1,6 @@
+# Request part - assuming the width is a float representing the target position
+float64 width
+---
+# Response part - you might want to return a success status
+bool success
+
