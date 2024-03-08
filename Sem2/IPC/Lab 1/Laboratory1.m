@@ -70,7 +70,11 @@ T3 = T_total3 - tm3;
 
 H3 = tf(k3, [T3 1], 'IOdelay', tm3);
 
+line([tm3, m_stationar2], [0, y_stationar3])
+line([0, 5], [y_stationar3, y_stationar3], 'LineStyle', '--')
+line([T3, T3], [0, y_stationar3], 'LineStyle', '--')
 hold
+
 step(H3, data3.u)
 %% Metoda Cohen Coon
 close all;
@@ -87,5 +91,9 @@ alfa = T4/tm4;
 
 H4 = tf(k3, [T4 1], 'IOdelay', tm4);
 
+line([tm4, m_stationar4], [0, y_stationar4])
+line([0, 5], [y_stationar4, y_stationar4], 'LineStyle', '--')
+line([T4, T4], [0, y_stationar4], 'LineStyle', '--')
 hold
+
 step(H4, data3.u)
