@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            span, div {
+                margin: 10px;
+                border: 1px solid blue;
+                background-color: pink; /* Added pink background color */
+            }
+            button {
+                background-color: pink; /* Button with pink background */
+                border: 2px solid deepPink; /* Deep pink border for better visibility */
+                color: white; /* White text for contrast */
+                padding: 10px 20px; /* Padding for better button appearance */
+                cursor: pointer; /* Cursor as pointer to indicate it's clickable */
+                transition: background-color 0.3s ease; /* Transition for hover effect */
+            }
+            button:hover {
+                background-color: deepPink; /* Darker pink on hover */
+            }
+        </style>
+
+        <script type="text/javascript">
+            function newChild() {
+                const newElement = document.createElement("div");
+                newElement.innerHTML = "The new element was created.";
+                document.getElementById("spanID").appendChild(newElement);
+            }
+        </script>
+    </head>
+    <body>
+        <span id="spanID">A child for this element will be created</span>
+        <button onclick="newChild()" title="Click me to add a new node!">Add node</button>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title> Pagina cu JavaScript </title>
+        <style>
+            body {
+                font-family: 'Courier New', monospace;
+                background-color: #f4f4f8; 
+                color: #333;
+                padding: 20px;
+            }
+            p {
+                font-size: 16px;
+                background-color: #e1e1ff;
+                padding: 5px;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function suma(a,b)
+            {
+                rezultatul=a+b
+                return rezultatul
+            }
+        </script>
+        <script type="text/javascript">
+            if(navigator.appName.indexOf("Internet Explorer")!=-1)
+            {
+                alert("It's Internet Explorer!")
+            }
+            else
+            {
+                alert("It's not Internet Explorer!")
+            }
+
+            var textul = "Textul interesant"
+            document.write(textul)
+            alert(textul)
+            alert(suma("Fanta","stick"))
+            document.write("<br>Suma lui 1+2 este: "+suma(1,2))
+        </script>
+    </body>
+</html>

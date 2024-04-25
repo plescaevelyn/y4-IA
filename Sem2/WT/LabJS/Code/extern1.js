@@ -1,0 +1,1 @@
+document.write("Sofia Ionescu-Ogrezeanu (n. 25 aprilie 1920, Falticeni, Suceava, Romania, d. 21 martie 2008, Bucuresti, Romania) a fost prima femeie neurochirurg din lume.")

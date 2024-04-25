@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #4a4a4a;
+            text-align: center;
+        }
+    </style>
+    <head>
+        <title>Prompt and confirm</title>
+    </head>
+    <body onLoad="window.confirm('Ciao '+ y+', did the page load?')" >
+        <script type="text/javascript">
+            var y=window.prompt("Name, please",'no name')
+        </script>
+    </body>
+</html>

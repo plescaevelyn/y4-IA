@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Listeners Example</title>
+    <style>
+        body {
+            font-family: 'Verdana', sans-serif;
+            background-color: #e9ecef;
+            color: #212529;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+        }
+        div {
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-top: 20px;
+            cursor: pointer;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <h1>Event Listeners Usage</h1>
+    <div id="test">Change the text</div>
+    <script>
+        document.addEventListener("click", changingFunction);
+        function changingFunction() {
+            document.getElementById("test").innerHTML = "text changed";
+            document.getElementById("test").style.color = "red";
+        }
+        /* document.removeEventListener("click", changingFunction); */
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html> 
+    <head> 
+        <title>Dynamic Page</title>
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                background-color: #f8f9fa;
+                color: #212529;
+                margin: 0;
+                padding: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            p {
+                margin: 20px;
+                padding: 20px;
+                background-color: #ffffff;
+                border: 1px solid #dee2e6;
+                width: 80%;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            }
+            form {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 20px;
+            }
+            input[type="button"] {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                background-color: #007bff;
+                color: #ffffff;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+            input[type="button"]:hover {
+                background-color: #0056b3;
+            }
+        </style>
+    </head>
+    <body>
+        <p id="paragrafTest">This is a test paragraph.</p> 
+        <form>
+            <!-- Alignment -->
+            <input type="button" value="Align left" onclick="paragrafTest.style.textAlign='left'">
+            <input type="button" value="Align right" onclick="paragrafTest.style.textAlign='right'"><br>
+            <!-- Color -->
+            <input type="button" value="Blue color" onclick="paragrafTest.style.color='blue'">
+            <input type="button" value="Red color" onclick="paragrafTest.style.color='red'">
+            <input type="button" value="White color" onclick="paragrafTest.style.color='white'"> 
+        </form> 
+    </body>
+</html>
