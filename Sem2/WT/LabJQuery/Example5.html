@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ffe6f0;
+        }
+        input {
+            height: 3em;
+            width: 10em;
+            padding: 10px;
+            margin: 20px;
+            color: white;
+            background-color: #ff69b4;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+        input:hover {
+            background-color: #ff85c0;
+        }
+        #divcutext {
+            font-size: 24px;
+            color: #ff69b4;
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            display: inline-block;
+            background-color: #fff0f5;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="divcutext">
+        Text inițial.
+    </div>
+    <form>
+        <input type="button" id="btnschimbator" value="Schimbă" />
+    </form>
+    <script>
+      /*
+            It is useless to have dedicated click function.
+On the other hand, we cannot write instructions directly as parameters of click(). Therefore, we use an anonymous function as a parameter of click(). Anonymous function has no name.
+            */
+        $("#btnschimbator").click(function() {
+            $("#divcutext").text("Text schimbat.");
+        });
+    </script>
+</body>
+</html>

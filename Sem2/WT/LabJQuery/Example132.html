@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Customized Image Albums</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .album {
+        margin-bottom: 50px;
+    }
+    .album a {
+        display: inline-block;
+        margin: 10px;
+        border: 2px solid #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .album a:hover {
+        border-color: #4CAF50;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+    h2 {
+        color: #333;
+    }
+</style>
+</head>
+<body>
+
+<div class="album" id="album1">
+    <h2>Album 1</h2>
+    <a href="img/pisicuta_mic.jpg" data-fancybox="gallery1" data-caption="Pisicuta.">
+        <img src="img/pisicuta_mic.jpg" alt="Pisicuta." />
+    </a>
+    <a href="img/cute_kitten2.jpeg" data-fancybox="gallery1" data-caption="Pisicuta draguta.">
+        <img src="img/cute_kitten2.jpeg" alt="Pisicuta draguta." />
+    </a>
+    <a href="img/cute_kitten3.jpg" data-fancybox="gallery1" data-caption="Pisicuta adorabila.">
+        <img src="img/cute_kitten3.jpg" alt="Pisicuta adorabila." />
+    </a>
+</div>
+
+<div class="album" id="album2">
+    <h2>Album 2</h2>
+    <a href="img/catelul_mic.jpg" data-fancybox="gallery2" data-caption="Catelus Ciobanesc German.">
+        <img src="img/catelul_mic.jpg" alt="Catelus Ciobanesc German." />
+    </a>
+    <a href="img/cute_puppy.jpeg" data-fancybox="gallery2" data-caption="Catelus Golden Retriever.">
+        <img src="img/cute_puppy.jpeg" alt="Catelus Golden Retriever." />
+    </a>
+    <a href="img/cute_puli_puppy.jpg" data-fancybox="gallery2" data-caption="Catelusi puli.">
+        <img src="img/cute_puli_puppy.jpg" alt="Catelusi puli." />
+    </a>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('[data-fancybox="gallery1"]').fancybox({
+            animationEffect: "zoom-in-out",
+            transitionEffect: "slide",
+            transitionDuration: 500,
+            buttons: [
+                "zoom",
+                "slideShow",
+                "thumbs",
+                "close"
+            ]
+        });
+        $('[data-fancybox="gallery2"]').fancybox({
+            animationEffect: "fade",
+            transitionEffect: "circular",
+            transitionDuration: 800,
+            buttons: [
+                "zoom",
+                "slideShow",
+                "thumbs",
+                "close"
+            ]
+        });
+    });
+</script>
+</body>
+</html>

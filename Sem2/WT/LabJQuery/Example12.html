@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ideal Weight in jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: inline-block;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="checkbox"] {
+            margin: 10px 0;
+        }
+        input[type="button"] {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        span#idealWeight {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(document).ready(function() {
+            $("#butonas").click(function() {
+                var height = parseFloat($("#h").val());
+                var age = parseInt($("#v").val());
+                var isWoman = $("#f").is(":checked");
+
+                if (isNaN(height) || isNaN(age)) {
+                    $("#g").text("Please enter valid height and age.");
+                    return;
+                }
+
+                var idealWeight;
+                if (isWoman) {
+                    idealWeight = height - 100 - ((height - 150) / 2.5) + ((age - 20) / 6);
+                } else {
+                    idealWeight = height - 100 - ((height - 150) / 4) + ((age - 20) / 4);
+                }
+
+                $("#g").text(idealWeight.toFixed(2) + " kg");
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <label for="h">Height (cm):</label>
+        <input type="text" id="h"><br>
+        <label for="v">Age:</label>
+        <input type="text" id="v"><br>
+        <label for="f">Woman:</label>
+        <input type="checkbox" id="f"><br>
+        <label>Ideal weight:</label>
+        <span id="g"></span><br>
+        <input type="button" id="butonas" value="Generate">
+    </form>
+</body>
+</html>

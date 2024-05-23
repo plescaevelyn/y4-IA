@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Menu with Submenus and Ideal Weight Calculators</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #wrapper {
+            width: 80%;
+            margin: 5% 10%;
+            padding: 10px 0;
+            background-color: #444;
+            color: white;
+            border-radius: 10px;
+        }
+        ul#menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            display: inline-block;
+            padding: 10px 20px;
+            font: 16px arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        ul li:hover {
+            background-color: #333;
+        }
+        .submenu {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #555;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        .submenu li {
+            display: block;
+            padding: 10px 20px;
+            font: 14px arial, sans-serif;
+            text-align: left;
+            background-color: #666;
+        }
+        .submenu li:hover {
+            background-color: #777;
+        }
+        form {
+            display: inline-block;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            color: black;
+        }
+        input[type="text"], input[type="checkbox"] {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="button"]:hover {
+            background-color: #45a049;
+        }
+        label {
+            display: block;
+            margin: 5px 0;
+        }
+        span#idealWeight, span#catIdealWeight {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#Products").click(function(){
+                $("#submenu-products").slideToggle('slow');
+            });
+
+            $("#Products, #submenu-products").mouseleave(function(){
+                $("#submenu-products").slideUp('slow');
+            });
+
+            $("#Contact").click(function(){
+                $("#submenu-contact").slideToggle('slow');
+            });
+
+            $("#Contact, #submenu-contact").mouseleave(function(){
+                $("#submenu-contact").slideUp('slow');
+            });
+
+            $("#WeightCalculator").click(function(){
+                $("#submenu-weight-calculator").slideToggle('slow');
+            });
+
+            $("#WeightCalculator, #submenu-weight-calculator").mouseleave(function(){
+                $("#submenu-weight-calculator").slideUp('slow');
+            });
+
+            $("#butonas").click(function() {
+                var height = parseFloat($("#h").val());
+                var age = parseInt($("#v").val());
+                var isWoman = $("#f").is(":checked");
+
+                if (isNaN(height) || isNaN(age)) {
+                    $("#g").text("Please enter valid height and age.");
+                    return;
+                }
+
+                var idealWeight;
+                if (isWoman) {
+                    idealWeight = height - 100 - ((height - 150) / 2.5) + ((age - 20) / 6);
+                } else {
+                    idealWeight = height - 100 - ((height - 150) / 4) + ((age - 20) / 4);
+                }
+
+                $("#g").text(idealWeight.toFixed(2) + " kg");
+            });
+
+            $("#catButton").click(function() {
+                var catAge = parseInt($("#catAge").val());
+
+                if (isNaN(catAge)) {
+                    $("#catWeight").text("Please enter a valid age.");
+                    return;
+                }
+
+                var catIdealWeight;
+                if (catAge <= 1) {
+                    catIdealWeight = 1.5 + (catAge * 1.5); // Very basic example: 1.5kg per month up to 1 year
+                } else {
+                    catIdealWeight = 4 + ((catAge - 1) * 0.2); // Cats older than 1 year, gain 0.2kg per year as a rough estimate
+                }
+
+                $("#catWeight").text(catIdealWeight.toFixed(2) + " kg");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <ul id="menu">
+            <li id="Home">Home</li>
+            <li id="Products">Products
+                <ul id="submenu-products" class="submenu">
+                    <li>Mobiles</li>
+                    <li>SmartTVs</li>
+                    <li>Laptops</li>
+                </ul>
+            </li>
+            <li id="Contact">Contact
+                <ul id="submenu-contact" class="submenu">
+                    <li>Send us message</li>
+                    <li>Location on map</li>
+                </ul>
+            </li>
+            <li id="WeightCalculator">Weight Calculator
+                <ul id="submenu-weight-calculator" class="submenu">
+                    <li>
+                        <div id="idealWeightCalculator">
+                            <form>
+                                <label for="h">Height (cm):</label>
+                                <input type="text" id="h"><br>
+                                <label for="v">Age:</label>
+                                <input type="text" id="v"><br>
+                                <label for="f">Woman:</label>
+                                <input type="checkbox" id="f"><br>
+                                <label>Ideal weight:</label>
+                                <span id="g"></span><br>
+                                <input type="button" id="butonas" value="Generate">
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <div id="catWeightCalculator">
+                            <form>
+                                <label for="catAge">Cat Age (years):</label>
+                                <input type="text" id="catAge"><br>
+                                <label>Ideal weight:</label>
+                                <span id="catWeight"></span><br>
+                                <input type="button" id="catButton" value="Generate">
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

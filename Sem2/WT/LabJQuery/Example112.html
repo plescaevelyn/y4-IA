@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        $(function(){
+            $("#Products").click(function(){
+                $("#submenu-products").slideToggle('slow');
+            });
+
+            $("#Products, #submenu-products").mouseleave(function(){
+                $("#submenu-products").slideUp('slow');
+            });
+
+            $("#Contact").click(function(){
+                $("#submenu-contact").slideToggle('slow');
+            });
+
+            $("#Contact, #submenu-contact").mouseleave(function(){
+                $("#submenu-contact").slideUp('slow');
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f0;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #wrapper {
+            width: 80%;
+            margin: 5% 10%;
+            padding: 10px 0;
+            background-color: #444;
+            color: white;
+            border-radius: 10px;
+        }
+        ul#menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        ul li {
+            display: inline;
+            padding: 10px 20px;
+            font: 16px arial, sans-serif;
+            text-align: center;
+            cursor: pointer;
+            position: relative;
+        }
+        ul li:hover {
+            background-color: #333;
+        }
+        .submenu {
+            display: none;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            background-color: #555;
+            position: absolute;
+            left: 0;
+            width: 100%;
+        }
+        .submenu li {
+            display: block;
+            padding: 10px 20px;
+            font: 14px arial, sans-serif;
+            text-align: left;
+        }
+        .submenu li:hover {
+            background-color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <ul id="menu">
+            <li id="Home">Home</li>
+            <li id="Products">Products
+                <ul id="submenu-products" class="submenu">
+                    <li>Mobiles</li>
+                    <li>SmartTVs</li>
+                    <li>Laptops</li>
+                </ul>
+            </li>
+            <li id="Contact">Contact
+                <ul id="submenu-contact" class="submenu">
+                    <li>Send us message</li>
+                    <li>Location on map</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
