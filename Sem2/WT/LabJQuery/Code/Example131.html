@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Customized Image Album</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        text-align: center;
+        margin-top: 50px;
+    }
+    a.album {
+        display: inline-block;
+        margin: 10px;
+        border: 2px solid #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    a.album:hover {
+        border-color: #4CAF50;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+</style>
+</head>
+<body>
+<a class="album" href="/img/pisicuta_mic.jpg" data-fancybox="gallery" data-caption="Pisicuta draguta.">
+    <img src="/img/pisicuta_mic.jpg" alt="Pisicuta draguta." />
+</a>
+<a class="album" href="/img/cute_kitten2.jpg" data-fancybox="gallery" data-caption="Pisicuta frumoasa.">
+    <img src="/img/cute_kitten2.jpg" alt="Pisicuta frumoasa." />
+</a>
+<a class="album" href="/img/cute_kitten3.jpg" data-fancybox="gallery" data-caption="Pisicuta adorabila.">
+    <img src="/img/cute_kitten3.jpg" alt="Pisicuta adorabila." />
+</a>
+
+<script>
+    $(document).ready(function() {
+        $('[data-fancybox="gallery"]').fancybox({
+            // Custom options
+        });
+    });
+</script>
+</body>
+</html>

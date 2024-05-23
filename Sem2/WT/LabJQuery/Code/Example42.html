@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #ffe6f0;
+        }
+        input {
+            height: 10em;
+            width: 10em;
+            padding: 40px;
+            margin: 20px 100px;
+            color: white;
+            background-color: green;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+        #divcutext {
+            font-size: 24px;
+            color: #ff69b4;
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            display: inline-block;
+            background-color: #fff0f5;
+            margin-bottom: 20px;
+        }
+        .wrapper {
+            display: inline-block;
+        }
+    </style>
+    <div id="divcutext">
+        Text inițial.
+    </div>
+    <div class="wrapper">
+        <form>
+            <input type="button" id="btnschimbator" value="Schimbă" />
+        </form>
+    </div>
+    <script>
+        function functieschimbare() {
+            $("#divcutext").text("Text schimbat.");
+            $("#divcutext").css("font-size", "+=1px");
+        }
+
+        $("#btnschimbator").click(functieschimbare);
+
+        $("#btnschimbator").hover(
+            function() {
+                $(this).css("background-color", "green");
+            },
+            function() {
+                $(this).css("background-color", "lightgrey");
+            }
+        );
+    </script>
+</body>
+</html>

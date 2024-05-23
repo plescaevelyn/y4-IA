@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- Start of application interface. -->
+<html>
+    <!-- Start header interface. -->
+    <head>
+        <meta charset="UTF-8" />
+        <!-- We load the jQuery library. -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+                background-color: #ffe6f0;
+            }
+            #divcutext {
+                font-size: 24px;
+                color: #ff69b4;
+                padding: 20px;
+                border: 2px solid #ff69b4;
+                border-radius: 10px;
+                display: inline-block;
+                background-color: #fff0f5;
+            }
+        </style>
+    <!-- Interface header end. -->
+    </head>
+    <!-- Start body interface. -->
+    <body>
+        <!-- A block with text, I called it "divcutext". -->
+        <div id="divcutext"> Text inițial.
+        </div>
+        <script>
+            <!-- We change the text of the block. The statement below runs automatically, without waiting for any triggering event.-->
+            <!-- In fact,  the original text won't even be visible, except for a few milliseconds, at startup. -->
+            $("#divcutext").text("Text schimbat.");
+        </script>
+    <!-- End interface body. -->
+    </body>
+<!-- Application interface end. -->
+</html>
