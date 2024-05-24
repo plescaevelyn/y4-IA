@@ -1,0 +1,35 @@
+<!--- Fisierul call_ajax_buton.html -->
+<!DOCTYPE html>
+
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(function() {
+  $('form#test').submit(function(event) {
+    event.preventDefault(); // Prevent the form from submitting via the browser
+    var form = $(this);
+    $.ajax({
+      type:'post',
+    url:'ajax.php',
+      data: form.serialize(),
+    success: function(data)
+           {
+               // show response from the php script.
+               $('#show').html(data);
+       }
+  });
+});
+});
+</script>
+</head>
+<body>
+<form id="test">
+  <input type="text" name="numele">
+  <input type="text" name="prenume">
+  <input type="submit" name="submit" value="Verifica">
+</form>
+<div id='show'> </div>
+
+</body>
+</html>

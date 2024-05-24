@@ -1,0 +1,26 @@
+<!--ajax/exemplu1_short_ajax/call_ajax_buton.html-->
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.post("ajax.php",
+    {
+      name: "AOSE",
+      city: "incercare"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP POST request to a page and get the result back from a php file on a server</button>
+
+</body>
+</html>

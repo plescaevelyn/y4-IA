@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            color: #ff1493;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"], input[type="submit"] {
+            border: 1px solid #ff1493;
+            border-radius: 5px;
+            padding: 5px;
+            margin: 5px;
+        }
+        input[type="submit"] {
+            background-color: #ff1493;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <form action="response.php" method="post">
+        Value to send <input type="text" name="val">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
