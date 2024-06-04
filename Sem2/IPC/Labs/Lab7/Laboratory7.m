@@ -59,3 +59,12 @@ Hr_PI = tf([Kr_PI*Ti_PI, Kr_PI], [Ti_PI, 0]);
 Hr_PID = tf([Kr_PID*Ti_PID*Td_PID, Kr_PID*Ti_PID, Kr_PID], [Ti_PID, 0, 0]);
 % step(feedback(Hr_PID*Hf,1)); title("PID controller");
 %% cazul motorului asincron
+% PI controller
+Kr_PI2 = Kr_PI/4;
+Ti_PI2 = Ti_PI;
+
+HR2 = tf([Kr_PI2*Ti_PI2, Kr_PI2], [Ti_PI2, 0]);
+
+H2 = tf([0, Kr_PI2], [Ti_PI2, 0]);
+
+H_PI = Kr_PI2 + H2;
