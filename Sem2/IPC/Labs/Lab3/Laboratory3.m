@@ -24,11 +24,11 @@ Hr_filter_dahlin = 1/1.9602 * minreal(H_elim * Hr_dahlin);
 
 Hr_filter_dahlin = tf(Hr_filter_dahlin);
 %% Kalman method
-Hf21 = tf(1.25, conv([9 1],[14 1]), 'iodelay', 3);
+Hf21 = tf(1.25, conv([9 1],[14 1]), 'iodelay', 3)
 ts = 0.5;
 
 [NUMd, DENd] = c2dm(Hf21.Numerator, Hf21.Denominator, ts);
-Hfd = tf(NUMd, DENd, ts,"iodelay", 6, "variable", "z^-1");
+Hfd = tf(NUMd, DENd, ts,"iodelay", 6, "variable", "z^-1")
 
 Hfd
 suma = sum(NUMd);
@@ -45,13 +45,13 @@ Q = Q{:};
 NUMr = Q;
 DENr = [1, 0, 0, 0, 0, 0, -P(1), -P(2), -P(3)];
 
-Hr_kalman = tf(NUMr, DENr, ts, "variable", "z^-1");
+Hr_kalman = tf(NUMr, DENr, ts, "variable", "z^-1")
 
 zpk(Hr_kalman)
 
 H_elim = tf([1 0.757182463525915], 1, ts, 'variable', 'z^-1');
 Hr_filter_kalman = 1/1.7571 * minreal(H_elim * Hr_kalman);
 
-Hr_filter_kalman = tf(Hr_filter_kalman);
+Hr_filter_kalman = tf(Hr_filter_kalman)
 
 zpk(Hr_filter_kalman)

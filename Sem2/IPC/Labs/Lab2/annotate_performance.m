@@ -3,14 +3,14 @@ function annotate_performance(H, color)
     [y, t] = step(H);
     y_ss = y(end);
     y_max = max(y);
-    a_sp = 1 - y_ss;
-    sigma = (y_max - y_ss) / y_ss * 100;
-    tolerance = 0.02;
+    a_sp = 1 - y_ss
+    sigma = (y_max - y_ss) / y_ss * 100
+    tolerance = 0.05;
     idx = find(abs(y - y_ss) <= tolerance * y_ss, 1, 'last');
     if isempty(idx)
-        t_s = NaN;
+        t_s = NaN
     else
-        t_s = t(idx);
+        t_s = t(idx)
     end
     
     % Plot step response

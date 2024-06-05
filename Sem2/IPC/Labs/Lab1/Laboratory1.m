@@ -1,6 +1,5 @@
+clc; clear variables; close all
 %% First dataset
-clear all
-
 t = [0, 0.2000, 0.4000, 0.6000, 0.8000, 1.0000, 1.2000, 1.4000, 1.6000, 1.8000, 2.0000, 2.2000, 2.4000, 2.6000, 2.8000, 3.0000, 3.2000, 3.4000, 3.6000, 3.8000, 4.0000, 4.2000, 4.4000, 4.6000, 4.8000, 5.0000];
 y = [0, 0.5652, 1.0365, 1.4294, 1.7570, 2.0302, 2.2579, 2.4478, 2.6061, 2.7381, 2.8481, 2.9399, 3.0163, 3.0801, 3.1333, 3.1776, 3.2146, 3.2454, 3.2711, 3.2926, 3.3104, 3.3253, 3.3377, 3.3481, 3.3567, 3.3639];
 
@@ -46,14 +45,14 @@ y_st = y(end);
 m_st = 1; % deoarece semnalul de intrare este de tip treapta
 m_0 = 0;
 
-k = (y_st - y_0) / (m_st - m_0);
+k = (y_st - y_0) / (m_st - m_0)
 
 t_m = 0.4;
 T_total = 1.134;
-T = T_total - t_m;
+T = T_total - t_m
 
-H = tf(k, [T, 1], 'IOdelay', t_m);
-line([0.4, m_st], [0, y_st])
+H = tf(k, [T, 1], 'IOdelay', t_m)
+line([0.4, m_st], [0, y_st]);
 line([0, 5], [y_st, y_st], 'LineStyle', '--')
 line([m_st, m_st], [0, y_st], 'LineStyle', '--')
 hold on
@@ -78,14 +77,14 @@ y_st = y(end);
 m_st = 1; % deoarece semnalul de intrare este de tip treapta
 m_0 = 0;
 
-k = (y_st - y_0) / (m_st - m_0);
+k = (y_st - y_0) / (m_st - m_0)
 
-t_m = 0.2;
+t_m = 0.2
 T1 = 2.17;
 t2 = 1.89;
-T = t2 - t_m;
+T = t2 - t_m
 
-H = tf(k, [T, 1], 'IOdelay', t_m);
+H = tf(k, [T, 1], 'IOdelay', t_m)
 
 line([0.2, m_st], [0, y_st])
 line([0, 5], [y_st, y_st], 'LineStyle', '--')
@@ -98,14 +97,14 @@ hold on
 y28 = 0.28*y(end)
 y632 = 0.632*y(end)
 
-t28 = 0.64;
-t632 = 1.35;
+t28 = 0.64
+t632 = 1.35
 
 T = 1.5 * (t632 - t28);
-t_m = 1.5 * (t28 - t632 / 3);
-alfa = T/t_m;
+t_m = 1.5 * (t28 - t632 / 3)
+alfa = T/t_m
 
-H = tf(k, [T 1], 'IOdelay', t_m);
+H = tf(k, [T 1], 'IOdelay', t_m)
 
 step(H, t, 'g')
 hold off
